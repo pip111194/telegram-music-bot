@@ -1,6 +1,19 @@
 # 🎵 Multi-Platform Telegram Music Bot
 
-A comprehensive Telegram Music Bot supporting **10 music platforms** including **5 FREE Indian platforms** (JioSaavn, Gaana, Wynk) that work without any API keys! Stream high-quality music in voice chats with interactive search and queue management.
+<div align="center">
+
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Pyrogram](https://img.shields.io/badge/Pyrogram-2.0-green.svg)](https://docs.pyrogram.org/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Platforms](https://img.shields.io/badge/Platforms-10-red.svg)](PLATFORMS.md)
+
+**A comprehensive Telegram Music Bot supporting 10 music platforms including 5 FREE Indian platforms (JioSaavn, Gaana, Wynk) that work without any API keys!**
+
+[Features](#-features) • [Quick Start](#-quick-start) • [Documentation](#-documentation) • [Commands](#-commands) • [Support](#-support)
+
+</div>
+
+---
 
 ## ✨ Features
 
@@ -16,9 +29,9 @@ A comprehensive Telegram Music Bot supporting **10 music platforms** including *
 - 🍎 **Apple Music** - iTunes catalog (public API)
 - 🔵 **Deezer** - International music (public API)
 
-#### 🔑 Optional API Key Platforms
-- 🟢 **Spotify** - Millions of tracks (optional API key)
-- 🟠 **SoundCloud** - Independent artists (optional API key)
+#### 🔑 Optional API Key Platforms (Better Results)
+- 🟢 **Spotify** - Millions of tracks
+- 🟠 **SoundCloud** - Independent artists
 
 ### 🎛️ Core Features
 - 🔍 **Cross-platform search** - Search all platforms simultaneously
@@ -30,233 +43,121 @@ A comprehensive Telegram Music Bot supporting **10 music platforms** including *
 - 📊 **Statistics** - Track bot usage and analytics
 - 📡 **Broadcast** - Send messages to all groups
 - ⚙️ **Flexible configuration** - Enable/disable any platform
+- 🌐 **Multi-language** - Hindi & English support
 
-## 🚀 Quick Start (No API Keys Needed!)
+---
 
-### Minimal Setup
+## 🚀 Quick Start
+
+### Option 1: Minimal Setup (No API Keys!)
+
 ```bash
-# Clone repository
+# 1. Clone repository
 git clone https://github.com/pip111194/telegram-music-bot.git
 cd telegram-music-bot
 
-# Install dependencies
+# 2. Install dependencies
 pip install -r requirements.txt
 
-# Copy and edit .env
+# 3. Install FFmpeg
+sudo apt install ffmpeg  # Linux
+brew install ffmpeg      # macOS
+
+# 4. Configure
 cp .env.example .env
-nano .env
+nano .env  # Add your Telegram credentials
+
+# 5. Start bot
+python bot.py
 ```
 
-**Minimal .env Configuration:**
+**Minimum .env Configuration:**
 ```env
-# Telegram (Required)
 API_ID=your_api_id
 API_HASH=your_api_hash
 BOT_TOKEN=your_bot_token
-
-# Database (Required)
 MONGO_DB_URI=mongodb://localhost:27017/musicbot
-
-# Bot Settings (Required)
 OWNER_ID=your_telegram_user_id
 LOG_GROUP_ID=your_log_group_id
 
-# Enable Free Platforms (No API keys needed!)
+# Enable free platforms
 ENABLE_JIOSAAVN=true
 ENABLE_GAANA=true
 ENABLE_WYNK=true
 ENABLE_YOUTUBE=true
-ENABLE_APPLE_MUSIC=true
-ENABLE_DEEZER=true
-ENABLE_JAMENDO=true
-ENABLE_AUDIOMACK=true
 ```
 
-**Start Bot:**
-```bash
-python bot.py
-```
-
-**Use Commands:**
+**Start Using:**
 ```
 /jiosaavn Kesariya
 /gaana Tum Hi Ho
-/wynk Apna Bana Le
 /play Shape of You
 ```
 
-## 📋 Commands
+### Option 2: Full Setup (With Optional API Keys)
+
+See [SETUP.md](SETUP.md) for detailed step-by-step installation guide.
+
+---
+
+## 📚 Documentation
+
+| Document | Description |
+|----------|-------------|
+| [📖 SETUP.md](SETUP.md) | Complete step-by-step setup guide (Hindi & English) |
+| [🎵 PLATFORMS.md](PLATFORMS.md) | Detailed platform documentation and comparison |
+| [🏗️ ARCHITECTURE.md](ARCHITECTURE.md) | System architecture and code structure |
+| [🤝 CONTRIBUTING.md](CONTRIBUTING.md) | Contribution guidelines and how to add platforms |
+| [❓ FAQ.md](FAQ.md) | Frequently asked questions (50+ Q&A) |
+
+---
+
+## 💬 Commands
 
 ### Music Commands
-```
-/play <song> - Play from YouTube
-/jiosaavn <song> - Play from JioSaavn (Free!)
-/gaana <song> - Play from Gaana (Free!)
-/wynk <song> - Play from Wynk Music (Free!)
-/spotify <song> - Play from Spotify
-/apple <song> - Play from Apple Music
-/soundcloud <song> - Play from SoundCloud
-/deezer <song> - Play from Deezer
-/jamendo <song> - Play from Jamendo (Free CC music)
-/audiomack <song> - Play from Audiomack (Free!)
-/search <song> - Search all platforms
-```
+| Command | Description | Example |
+|---------|-------------|---------|
+| `/play <song>` | Play from YouTube | `/play Shape of You` |
+| `/jiosaavn <song>` | Play from JioSaavn | `/jiosaavn Kesariya` |
+| `/gaana <song>` | Play from Gaana | `/gaana Tum Hi Ho` |
+| `/wynk <song>` | Play from Wynk | `/wynk Apna Bana Le` |
+| `/spotify <song>` | Play from Spotify | `/spotify Starboy` |
+| `/apple <song>` | Play from Apple Music | `/apple Blinding Lights` |
+| `/soundcloud <song>` | Play from SoundCloud | `/soundcloud Mix` |
+| `/deezer <song>` | Play from Deezer | `/deezer Levitating` |
+| `/jamendo <song>` | Play from Jamendo | `/jamendo Chill` |
+| `/audiomack <song>` | Play from Audiomack | `/audiomack Hip Hop` |
+| `/search <song>` | Search all platforms | `/search Kesariya` |
 
 ### Short Commands
 ```
-/jio, /js - JioSaavn
-/gn - Gaana
-/wk - Wynk
-/sp - Spotify
-/am - Apple Music / Audiomack
-/sc - SoundCloud
-/dz - Deezer
-/jm - Jamendo
-/yt - YouTube
+/jio, /js    → JioSaavn
+/gn          → Gaana
+/wk          → Wynk
+/sp          → Spotify
+/yt          → YouTube
+/dz          → Deezer
+/jm          → Jamendo
+/am          → Audiomack (or Apple Music)
+/sc          → SoundCloud
 ```
 
 ### Playback Controls
-```
-/pause - Pause playback
-/resume - Resume playback
-/skip - Skip current song
-/stop - Stop and clear queue
-/queue - Show current queue
-```
+| Command | Description |
+|---------|-------------|
+| `/pause` | Pause current playback |
+| `/resume` | Resume playback |
+| `/skip` | Skip to next song |
+| `/stop` | Stop playback and clear queue |
+| `/queue` | Show current queue |
 
 ### Admin Commands
-```
-/stats - Bot statistics
-/broadcast - Send message to all groups
-```
+| Command | Description |
+|---------|-------------|
+| `/stats` | Show bot statistics |
+| `/broadcast <msg>` | Send message to all groups |
 
-## 🔧 Full Setup Guide
-
-### Prerequisites
-- Python 3.8+
-- MongoDB database
-- FFmpeg installed
-- Telegram Bot Token
-- Telegram API credentials
-
-### Step 1: Get Telegram Credentials
-
-#### Telegram API
-1. Visit https://my.telegram.org
-2. Login with your phone number
-3. Go to "API Development Tools"
-4. Create an app and get API ID & Hash
-
-#### Bot Token
-1. Open @BotFather on Telegram
-2. Send `/newbot`
-3. Follow instructions
-4. Copy the Bot Token
-
-### Step 2: Install FFmpeg
-
-```bash
-# Ubuntu/Debian
-sudo apt update && sudo apt install ffmpeg
-
-# macOS
-brew install ffmpeg
-
-# Windows
-# Download from https://ffmpeg.org/download.html
-```
-
-### Step 3: Install Dependencies
-
-```bash
-# Clone repository
-git clone https://github.com/pip111194/telegram-music-bot.git
-cd telegram-music-bot
-
-# Install Python packages
-pip install -r requirements.txt
-
-# Create downloads folder
-mkdir downloads
-```
-
-### Step 4: Configuration
-
-```bash
-# Copy environment template
-cp .env.example .env
-
-# Edit configuration
-nano .env
-```
-
-**Complete .env Configuration:**
-```env
-# Telegram Configuration (Required)
-API_ID=your_api_id
-API_HASH=your_api_hash
-BOT_TOKEN=your_bot_token
-
-# Database (Required)
-MONGO_DB_URI=mongodb://localhost:27017/musicbot
-
-# Bot Settings (Required)
-LOG_GROUP_ID=your_log_group_id
-OWNER_ID=your_user_id
-
-# Optional API Keys (Better results)
-SPOTIFY_CLIENT_ID=your_spotify_client_id
-SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
-SOUNDCLOUD_CLIENT_ID=your_soundcloud_client_id
-JAMENDO_CLIENT_ID=your_jamendo_client_id
-AUDIOMACK_API_KEY=your_audiomack_api_key
-
-# Platform Enable/Disable
-ENABLE_JIOSAAVN=true
-ENABLE_GAANA=true
-ENABLE_WYNK=true
-ENABLE_SPOTIFY=true
-ENABLE_APPLE_MUSIC=true
-ENABLE_SOUNDCLOUD=true
-ENABLE_DEEZER=true
-ENABLE_YOUTUBE=true
-ENABLE_JAMENDO=true
-ENABLE_AUDIOMACK=true
-```
-
-### Step 5: Get Optional API Keys
-
-#### Spotify (Recommended)
-1. Go to https://developer.spotify.com/dashboard
-2. Create an app
-3. Copy Client ID and Client Secret
-
-#### SoundCloud (Optional)
-1. Visit https://soundcloud.com/you/apps
-2. Register a new app
-3. Copy Client ID
-
-#### Jamendo (Optional)
-1. Visit https://developer.jamendo.com
-2. Register for API access
-3. Copy Client ID
-
-#### Audiomack (Optional)
-1. Visit https://www.audiomack.com/data-api
-2. Request API access
-3. Copy API Key
-
-### Step 6: Run Bot
-
-```bash
-# Start bot
-python bot.py
-
-# Or use screen/tmux for background
-screen -S musicbot
-python bot.py
-# Press Ctrl+A then D to detach
-```
+---
 
 ## 📊 Platform Comparison
 
@@ -273,55 +174,172 @@ python bot.py
 | Spotify | ✅ | Optional | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | `/spotify`, `/sp` |
 | SoundCloud | ✅ | Optional | ⭐⭐ | ⭐⭐⭐⭐ | `/soundcloud`, `/sc` |
 
-## 💡 Usage Tips
+---
+
+## 💡 Usage Examples
 
 ### For Indian Music
-```
-/jiosaavn Kesariya
-/gaana Tum Hi Ho
-/wynk Apna Bana Le
+```bash
+/jiosaavn Kesariya          # Bollywood
+/gaana Tum Hi Ho            # Romantic
+/wynk Apna Bana Le          # Latest hits
 ```
 
 ### For International Music
-```
-/spotify Starboy
-/apple Blinding Lights
-/deezer Levitating
+```bash
+/spotify Starboy            # Pop
+/apple Blinding Lights      # International hits
+/deezer Levitating          # Dance
 ```
 
 ### For Everything
-```
-/play Shape of You
-/search Kesariya
+```bash
+/play Shape of You          # YouTube
+/search Kesariya            # All platforms
 ```
 
-### For Creative Commons Music
-```
-/jamendo Chill Music
+### For Creative Commons
+```bash
+/jamendo Chill Music        # Free CC music
 ```
 
 ### For Hip-Hop/Rap
+```bash
+/audiomack Hip Hop Beats    # Latest rap
 ```
-/audiomack Hip Hop Beats
+
+---
+
+## 🔧 Configuration
+
+### Enable/Disable Platforms
+
+Edit `.env` file:
+
+```env
+# Free Indian Platforms (No API key needed!)
+ENABLE_JIOSAAVN=true
+ENABLE_GAANA=true
+ENABLE_WYNK=true
+
+# Free International Platforms
+ENABLE_YOUTUBE=true
+ENABLE_APPLE_MUSIC=true
+ENABLE_DEEZER=true
+ENABLE_JAMENDO=true
+ENABLE_AUDIOMACK=true
+
+# Optional API Key Platforms
+ENABLE_SPOTIFY=false
+ENABLE_SOUNDCLOUD=false
 ```
 
-## 🔧 Troubleshooting
+### Add Optional API Keys (Better Results)
 
-### Platform Not Working?
-1. Check if platform is enabled in `.env`
-2. Verify API key (if required)
-3. Check internet connection
-4. Try different platform
+```env
+# Spotify (https://developer.spotify.com/dashboard)
+SPOTIFY_CLIENT_ID=your_client_id
+SPOTIFY_CLIENT_SECRET=your_client_secret
 
-### No Results Found?
-1. Try different search terms
-2. Use `/search` to search all platforms
-3. Try platform-specific search
+# SoundCloud (https://soundcloud.com/you/apps)
+SOUNDCLOUD_CLIENT_ID=your_client_id
 
-### Download Failed?
-1. Check if song is available
-2. Try different platform
-3. YouTube is used as fallback
+# Jamendo (https://developer.jamendo.com)
+JAMENDO_CLIENT_ID=your_client_id
+
+# Audiomack (https://www.audiomack.com/data-api)
+AUDIOMACK_API_KEY=your_api_key
+```
+
+---
+
+## 📋 Requirements
+
+- **Python 3.8+**
+- **MongoDB** (local or Atlas)
+- **FFmpeg**
+- **Telegram Bot Token**
+- **Telegram API credentials**
+
+### System Requirements
+- **OS:** Linux, macOS, or Windows
+- **RAM:** 1GB minimum, 2GB recommended
+- **Storage:** 5GB for downloads
+- **Internet:** Stable connection
+
+---
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**Bot not starting?**
+```bash
+pip install -r requirements.txt --upgrade
+python --version  # Check 3.8+
+```
+
+**No results found?**
+- Check internet connection
+- Verify platform is enabled in `.env`
+- Try different platform
+
+**Download failed?**
+```bash
+ffmpeg -version  # Check FFmpeg
+mkdir downloads  # Create folder
+```
+
+**Commands not working?**
+- Make bot admin in group
+- Start voice chat
+- Send `/start` command
+
+See [FAQ.md](FAQ.md) for 50+ common questions and solutions.
+
+---
+
+## 🏗️ Project Structure
+
+```
+telegram-music-bot/
+├── bot.py                 # Main entry point
+├── config.py              # Configuration
+├── requirements.txt       # Dependencies
+├── .env.example          # Environment template
+│
+├── handlers/             # Command handlers
+│   ├── music.py         # Music commands
+│   ├── platforms.py     # Platform handlers
+│   ├── free_platforms.py # Free platform handlers
+│   ├── admin.py         # Admin commands
+│   └── misc.py          # Misc commands
+│
+├── helpers/              # Helper modules
+│   ├── music_platforms.py # Platform manager
+│   ├── jiosaavn.py      # JioSaavn API
+│   ├── gaana.py         # Gaana API
+│   ├── wynk.py          # Wynk API
+│   ├── spotify.py       # Spotify API
+│   ├── ytdl.py          # YouTube downloader
+│   └── ...              # Other helpers
+│
+└── downloads/            # Downloaded files
+```
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed system architecture.
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
+- How to contribute
+- Adding new platforms
+- Code guidelines
+- Pull request process
+
+---
 
 ## 📝 Notes
 
@@ -332,34 +350,49 @@ python bot.py
 - **Multiple platforms work simultaneously**
 - **Bot automatically falls back to YouTube if direct download fails**
 
-## 📚 Documentation
-
-For detailed platform documentation, see [PLATFORMS.md](PLATFORMS.md)
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to:
-- Add new music platforms
-- Improve existing features
-- Fix bugs
-- Enhance documentation
+---
 
 ## 📄 License
 
-This project is licensed under the MIT License.
-
-## 🙏 Credits
-
-- Pyrogram - Telegram MTProto API framework
-- yt-dlp - YouTube downloader
-- All music platform APIs
-
-## 📞 Support
-
-For issues and questions:
-- Open an issue on GitHub
-- Contact: [Your Contact Info]
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
+## 🙏 Credits
+
+- **Pyrogram** - Telegram MTProto API framework
+- **yt-dlp** - YouTube downloader
+- **All music platform APIs**
+- **Contributors** - Thank you for your contributions!
+
+---
+
+## 📞 Support
+
+### Documentation
+- [Setup Guide](SETUP.md) - Complete installation guide
+- [Platform Guide](PLATFORMS.md) - Platform details
+- [FAQ](FAQ.md) - Common questions
+- [Architecture](ARCHITECTURE.md) - System design
+- [Contributing](CONTRIBUTING.md) - How to contribute
+
+### Community
+- **GitHub Issues** - Bug reports and feature requests
+- **Discussions** - Questions and ideas
+- **Telegram** - [Support Group] (if available)
+
+---
+
+## 🌟 Star History
+
+If you like this project, please give it a ⭐ on GitHub!
+
+---
+
+<div align="center">
+
 **Made with ❤️ for music lovers**
+
+[⬆ Back to Top](#-multi-platform-telegram-music-bot)
+
+</div>
